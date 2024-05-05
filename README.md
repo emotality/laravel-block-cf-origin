@@ -9,7 +9,7 @@
 Laravel package to block direct requests to your Cloudlfare-protected origin server.
 
 <p>
-    <a href="https://www.everlytic.com" target="_blank">
+    <a href="https://www.cloudflare.com" target="_blank">
         <img src="https://raw.githubusercontent.com/emotality/files/master/GitHub/Cloudflare.png" height="50">
     </a>
 </p>
@@ -17,8 +17,8 @@ Laravel package to block direct requests to your Cloudlfare-protected origin ser
 ## Overview
 
 This packages should only be used when the following applies:
-1. You can't add firewall rules to only accept requests from Edge IP addresses because your server is shared with other projects that doesn't use Cloudflare. If you have a single app running on your server, rather add these firewall rules.
-2. You can't add deny/allow rules to your nginx/Apache config because you are using the `set_real_ip_from` / `mod_remoteip` module to forward their real IP _(X-Forwarded-For)_. If you don't need to forward the user's real IP, rather add deny/allow rules to your nginx/Apache config.
+1. You can't add firewall rules to only accept requests from Edge IP addresses because your server is shared with other projects that don't use Cloudflare. If you have a single app running on your server, rather add firewall rules.
+2. You can't add deny/allow rules to your nginx/Apache config because you are using the `set_real_ip_from` / `mod_remoteip` module to forward the user's real IP _(X-Forwarded-For)_. If you don't need to forward the user's real IP, rather add deny/allow rules to your nginx/Apache config.
 
 _See [Useful Links](#useful-links) section below for more information._
 
