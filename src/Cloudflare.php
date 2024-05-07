@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Log;
 class Cloudflare
 {
     private static array $config = [
-        'enabled'      => true,
-        'debug'        => false,
-        'environments' => ['production'],
-        'cache_days'   => 60,
-        'exception'    => [
+        'enabled'       => true,
+        'debug'         => false,
+        'environments'  => ['production', 'staging'],
+        'fastcgi_param' => 'CF_EDGE_IP',
+        'cache_days'    => 60,
+        'exception'     => [
             'status_code' => 403,
             'message'     => 'Accessing the server directly is forbidden!',
         ],

@@ -18,7 +18,13 @@ class BlockNonCloudflareRequests
         $config = Cloudflare::config();
 
         if ($config['enabled'] && App::environment($config['environments'])) {
-            if (! IP::isFromCloudflare($request->ip())) {
+            if (is_null($ip = $request->server($config['fastcgi_param']))) {
+                Log::notice(sprintf('Cloudflare: FastCGI (FPM) parameter [%s] not set on web server (Nginx/Apache). Allowed request from %s', $config['fastcgi_param'], $request->ip()));
+
+                return $next($request);
+            }
+
+            if (! IP::isFromCloudflare($ip)) {
                 $exception = $config['exception'];
 
                 if ($config['debug']) {
